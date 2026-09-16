@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <property name="SERVICE_NAME" value="crawlfb-dev"/>
+    <property name="LOKI_ENDPOINT" value="${LOKI_ENDPOINT}" />
+    <property name="LOKI_USER" value="${LOKI_USER}" />
+    <property name="LOKI_PASS" value="${LOKI_PASS}" />
+    <!-- Console -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>${LOKI_ENDPOINT}</url>
+            <auth>
+                <username>${LOKI_USER}</username>
+                <password>${LOKI_PASS}</password>
+            </auth>
+            <useProtobufApi>true</useProtobufApi>
+            <sender class="com.github.loki4j.logback.ApacheHttpSender"/>
+            <requestTimeoutMs>10000</requestTimeoutMs>
+
+        </http>
+        <labels>
+            app = ${SERVICE_NAME}
+            host = ${HOSTNAME}
+            level = %level
+        </labels>
+        <message>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}#%M - %msg%n</pattern>
+        </message>
+        <batch>
+            <maxItems>100</maxItems>
+            <timeoutMs>10000</timeoutMs>
+        </batch>
+        <verbose>true</verbose>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="LOKI"/>
+    </root>
+
+
+</configuration>
