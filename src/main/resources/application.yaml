@@ -23,9 +23,9 @@ spring:
   application.name: cli
   profiles.active: local
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/cot}
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:123}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${DB_NAME}
+    username: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD:123}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10

@@ -48,11 +48,11 @@ public class SendRequest {
     }
 
     public SendRequest(OkHttpClient okHttpClient, ProxyInterceptor proxyInterceptor) {
-        this(okHttpClient, proxyInterceptor, null);
+        this(okHttpClient, proxyInterceptor, (BotInterceptor) null);
     }
 
     public SendRequest(OkHttpClient okHttpClient) {
-        this(okHttpClient, null, null);
+        this(okHttpClient, (ProxyInterceptor) null, (BotInterceptor) null);
     }
 
     private ProxyInterceptor getProxyInterceptor() {
