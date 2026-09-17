@@ -23,7 +23,7 @@ spring:
   application.name: cli
   profiles.active: local
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/fb}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cot}
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:123}
     driver-class-name: org.postgresql.Driver
@@ -33,22 +33,24 @@ spring:
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
       hibernate:
-        ddl-auto: none
-      show-sql: false
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: false
-          use_sql_comments: false
-      jackson:
-        default-property-inclusion: non_null
-        serialization.write-dates-as-timestamps: false
-      liquibase:
-        default-schema: facebook_crawler
-        enabled: ${LIQUIBASE_ENABLED:true}
-        change-log: classpath:/db/changelog/db.changelog.xml
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+        use_sql_comments: false
+  jackson:
+    default-property-inclusion: non_null
+    serialization.write-dates-as-timestamps: false
+  liquibase:
+    enabled: ${LIQUIBASE_ENABLED:true}
+    change-log: classpath:/db/changelog/db.changelog.xml
+    default-schema: cli
+    liquibase-schema: cli
+    drop-first: false
 
 okhttp:
   connect-timeout: 10s

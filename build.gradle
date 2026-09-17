@@ -18,12 +18,19 @@ repositories {
 }
 
 dependencies {
+	// Source: https://mvnrepository.com/artifact/com.google.code.gson/gson
+	implementation("com.google.code.gson:gson:2.13.2")
+	// Source: https://mvnrepository.com/artifact/com.networknt/json-schema-validator
+	implementation("com.networknt:json-schema-validator:1.5.9")
 	// Source: https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
 	implementation("com.squareup.okhttp3:okhttp:5.3.2")
 	// Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
 	implementation("org.springframework.boot:spring-boot-starter-data-redis:4.1.0")
 	// Source: https://mvnrepository.com/artifact/com.github.loki4j/loki-logback-appender
 	implementation("com.github.loki4j:loki-logback-appender:2.0.3")
+	// Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:4.1.0")
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
 	implementation 'org.springframework.boot:spring-boot-starter-liquibase'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
