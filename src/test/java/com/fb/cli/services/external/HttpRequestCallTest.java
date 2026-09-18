@@ -115,4 +115,77 @@ class HttpRequestCallTest {
         assertEquals("{\"done\":true}", result);
         assertTrue(customInterceptorCalled.get());
     }
+
+    @Test
+    @DisplayName("Gửi request có .withBot(bot, mapper) -> lambda tự định nghĩa map các trường của Bot vào header")
+    void testWithBotCustomMapper() {
+        com.fb.cli.entities.Bot bot = com.fb.cli.entities.Bot.builder()
+                .botId("fb_bot_99")
+                .token("EAAG_TEST_TOKEN")
+                .cookies("c_user=10001; xs=sec99;")
+                .userAgent("Mozilla/5.0 Custom")
+                .build();
+
+        OkHttpClient mockClient = new OkHttpClient.Builder()
+                .addInterceptor(chain -> {
+                    assertEquals("Bearer EAAG_TEST_TOKEN", chain.request().header("Authorization"));
+                    assertEquals("c_user=10001; xs=sec99;", chain.request().header("Cookie"));
+                    assertEquals("Mozilla/5.0 Custom", chain.request().header("User-Agent"));
+                    return new Response.Builder()
+                            .request(chain.request())
+                            .protocol(Protocol.HTTP_1_1)
+                            .code(200)
+                            .message("OK")
+                            .body(ResponseBody.create("{\"ok\":true}", okhttp3.MediaType.get("application/json")))
+                            .build();
+                })
+                .build();
+
+        SendRequest sendRequest = new SendRequest(mockClient);
+
+        String result = sendRequest.get("https://graph.facebook.com/me")
+                .withBot(bot, (b, req) -> {
+                    req.header("Authorization", "Bearer " + b.getToken());
+                    req.header("Cookie", b.getCookies());
+                    req.header("User-Agent", b.getUserAgent());
+                })
+                .execute();
+
+        assertEquals("{\"ok\":true}", result);
+    }
+
+    @Test
+    @DisplayName("Gửi request có .withBot(bot) với ánh xạ mặc định")
+    void testWithBotDefaultMapping() {
+        com.fb.cli.entities.Bot bot = com.fb.cli.entities.Bot.builder()
+                .botId("fb_bot_default")
+                .token("DEFAULT_TOKEN")
+                .cookies("sb=123")
+                .userAgent("DefaultAgent/1.0")
+                .build();
+
+        OkHttpClient mockClient = new OkHttpClient.Builder()
+                .addInterceptor(chain -> {
+                    assertEquals("Bearer DEFAULT_TOKEN", chain.request().header("Authorization"));
+                    assertEquals("sb=123", chain.request().header("Cookie"));
+                    assertEquals("DefaultAgent/1.0", chain.request().header("User-Agent"));
+                    return new Response.Builder()
+                            .request(chain.request())
+                            .protocol(Protocol.HTTP_1_1)
+                            .code(200)
+                            .message("OK")
+                            .body(ResponseBody.create("{\"status\":\"default_ok\"}", okhttp3.MediaType.get("application/json")))
+                            .build();
+                })
+                .build();
+
+        SendRequest sendRequest = new SendRequest(mockClient);
+
+        String result = sendRequest.get("https://graph.facebook.com/v19.0/me")
+                .withBot(bot)
+                .execute();
+
+        assertEquals("{\"status\":\"default_ok\"}", result);
+    }
 }
+

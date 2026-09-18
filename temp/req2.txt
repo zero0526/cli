@@ -1,0 +1,23 @@
+curl --url ^"https://accountscenter.facebook.com/api/graphql/^" ^
+  -H ^"accept: */*^" ^
+  -H ^"accept-language: en-US,en;q=0.9^" ^
+  -H ^"content-type: application/x-www-form-urlencoded^" ^
+  -b ^"datr=Mfqsaqx_tu0ZihysQQ7G3DEQ; sb=MfqsavOJrQd_GfHjBKiKZmM8; c_user=61586070854620; fr=1OTCssrJEQl5LLPyW.AWf2WRVVCtmSKqojlvdnM8peYdl5CmmkpTRi4UNF0823h4xB76E.BqrPpR..AAA.0.0.BqrPpR.AWehSurinkDexon_bokDNc1SQhk; xs=15^%^3AXdsKObd-3DGxnw^%^3A2^%^3A1789721166^%^3A-1^%^3A-1^%^3A^%^3AAcwCymacF8S2iTXSSLa6zPmSVt0Wpzp77gpGputhag; presence=C^%^7B^%^22t3^%^22^%^3A^%^5B^%^5D^%^2C^%^22utc3^%^22^%^3A1789721287508^%^2C^%^22v^%^22^%^3A1^%^7D; wd=1365x945^" ^
+  -H ^"origin: https://accountscenter.facebook.com^" ^
+  -H ^"priority: u=1, i^" ^
+  -H ^"referer: https://accountscenter.facebook.com/profiles/61586070854620/name/?entrypoint=fb_account_center^" ^
+  -H ^"sec-ch-prefers-color-scheme: light^" ^
+  -H ^"sec-ch-ua: ^\^"Google Chrome^\^";v=^\^"153^\^", ^\^"Not_A Brand^\^";v=^\^"8^\^", ^\^"Chromium^\^";v=^\^"153^\^"^" ^
+  -H ^"sec-ch-ua-full-version-list: ^\^"Google Chrome^\^";v=^\^"153.0.8010.47^\^", ^\^"Not_A Brand^\^";v=^\^"8.0.0.0^\^", ^\^"Chromium^\^";v=^\^"153.0.8010.47^\^"^" ^
+  -H ^"sec-ch-ua-mobile: ?0^" ^
+  -H ^"sec-ch-ua-model: ^\^"^\^"^" ^
+  -H ^"sec-ch-ua-platform: ^\^"Windows^\^"^" ^
+  -H ^"sec-ch-ua-platform-version: ^\^"19.0.0^\^"^" ^
+  -H ^"sec-fetch-dest: empty^" ^
+  -H ^"sec-fetch-mode: cors^" ^
+  -H ^"sec-fetch-site: same-origin^" ^
+  -H ^"user-agent: Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36^" ^
+  -H ^"x-asbd-id: 359341^" ^
+  -H ^"x-fb-friendly-name: useFXIMNameValidatorQuery^" ^
+  -H ^"x-fb-lsd: liUxPMS7F1BNU77blgYv94^" ^
+  --data-raw ^"av=61586070854620^&__user=61586070854620^&__a=1^&__req=t^&__hs=20714.HYP^%^3Aaccounts_center_pkg.2.1...0^&dpr=1^&__ccg=EXCELLENT^&__rev=1047863799^&__s=b7vngc^%^3A9wxopg^%^3A5x9lae^&__hsi=7686794564837825299^&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W099w8G1Dz81s8hwnU2lwv89k2C1Fwc60D85m1mzXwae4UaEW0Loco5G0zK1swa-0raazo7u0zE2ZwrUdUcobU3Cwr86C1nwro2PxW1ow4-w3C8doS1Jw^&__csr=gnNsD6NibbmxGf6RQAwxlXsLFhkuxf8yTJPNaVdrIG8GlsBjaihqmVLnKWGrHBmAA_yZWuBp5KEzB_CjGeKi-FWyqJDAWlBOkmXyEynh9siUgLADGlK4-AmGAb-RUyFFVlonyt4UKtk-qcVqArUy5898gzVFoCqUzyaKnyK8x2dKax-ezUC4EC68Kq2nxC4uq2ilJDzogUny9Wz8oy84G0Zo3yw9G0acRsw6e1Jga80a1Au3m3W7o01pmU0Ve0bKw4Cw1Lyb3y1awQcwZc2Rw2OE2LzEO8w3RoqAxS222i4ogxy69ofUrDAAAKu07MocoowUxp7hoOdx6-bw8q2u4EN2JG4S6rwi8crzUbo8U7i2O1QwNCwHjyoaogwroqxq9y8aoowDKm3ydK2aubDAAwyxaq59euii4pbCK4Arxe22bKV4miui9jCzUyV48wFxO58jByo-h7hV8Ci8ypLzEvy98Z7AVpfKmEhAyogzFAq2yq2mUeoW3Kexi1_wYgGVolyBBiy4p1O7Fo-^&__hsdp=gsgpMzE1Z9N362wP5VNhgIM35WzP2181AGsziaoUSUGcgwDe1iCS1jy8ij4NYV2mbgTwJg9Enw6lcaxui0Sxg4K51o6y4o2yc2m7oB3EcE4pbdxN58t0E2wsFwyx609jwnorwW5wmUW3G4Ec2w9U4FS0hMi1PX42A7k09xwygaU6K0G80Bi2S1lz82dLU2cwZwVw8a0Dk3t0fBik0jW3yA5U1b8a8W0hm5o3Yw5qwyw22U-0bHxq07nEowgU0mZw2HWwAwdm7835G5Q0Bo7y2ngfEbEb86-m0ME6a0Aohwwwr82CwKwdi0k20zo5i2y0oa05ao6G1Vw2d80AS8wnVE2fw^&__hblp=08W0-U0Xx2Ua8lzqwoo5mboaVQ5UR122KE1M8ixip0TwaO1ayUe8hwWCiAw9V3onxula3Cezk1zzojgcUiG3qp0sU1Jp8lCwno2OQqi6K2ueJ0_gyU723Ki1TG2q1Wwi8C1EDw2t8a-aGUuhHwLhAdwxxp0FBgc8jwBx6ECdgogdU9EGUuw8-9w-wkEW2S10xq9wZwyAyXgvwExq3SeKEaVUy1UxS1pwxwwz9A5obA0y8K15wjUfU3mwUxeu1pwda68-0jGfweO0_8jg0AS3C2W0x86OfwAwrU1boW0oS0mK0JUkwh81qU0Ae0CU0I208jwWwjoaod85d0goao5e9wUwae6U2bwj8fE38waW2Km2-4pe2e17wxwnU4em1DU2Xw8SUb8dE5u0KomwGwuEd8C7o2Hwxw4gw2RE0jzw5rwOwdy0nm1ZwCwrU2ew^&__sjsp=grE6svW4g7yD464xgAl5VNhgIM35WzP2181AGsxOCe2C0Qo^&__comet_req=5^&fb_dtsg=NAfw7eZb8iYagizaHxiITK_tHo-k01eerIN3JbjrhnYT2jFrpzuGN6Q^%^3A15^%^3A1789721166^&jazoest=25672^&lsd=liUxPMS7F1BNU77blgYv94^&__spin_r=1047863799^&__spin_b=trunk^&__spin_t=1789721326^&__crn=comet.fx.accounts_center.name.editor^&fb_api_caller_class=RelayModern^&fb_api_req_friendly_name=useFXIMNameValidatorQuery^&server_timestamps=true^&variables=^%^7B^%^22identity_ids^%^22^%^3A^%^5B^%^2261586070854620^%^22^%^5D^%^2C^%^22first_name^%^22^%^3A^%^22Nguy^%^E1^%^BB^%^85n^%^22^%^2C^%^22last_name^%^22^%^3A^%^22B^%^E1^%^BA^%^A3o^%^22^%^2C^%^22middle_name^%^22^%^3A^%^22Tu^%^E1^%^BA^%^A5n^%^22^%^2C^%^22scale^%^22^%^3A1^%^2C^%^22platform^%^22^%^3A^%^22FACEBOOK^%^22^%^7D^&doc_id=26692801570319630^"
