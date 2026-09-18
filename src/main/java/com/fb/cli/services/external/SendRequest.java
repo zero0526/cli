@@ -1,5 +1,6 @@
 package com.fb.cli.services.external;
 
+import com.fb.cli.services.external.interceptor.BotInterceptor;
 import com.fb.cli.services.external.interceptor.ProxyInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
