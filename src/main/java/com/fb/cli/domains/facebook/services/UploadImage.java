@@ -20,9 +20,9 @@ import java.nio.file.Files;
 import java.util.UUID;
 
 @Slf4j
-@Service
+@Service("facebookWebUploadPhoto")
 @RequiredArgsConstructor
-public class UploadImage {
+public class UploadImage implements UploadPhoto {
 
     private static final String UPLOAD_ENDPOINT = "https://upload.facebook.com/ajax/react_composer/attachments/photo/upload";
 

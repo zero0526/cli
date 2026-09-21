@@ -22,7 +22,7 @@ import java.util.*;
 @Slf4j
 @Service("facebookWebComment")
 @RequiredArgsConstructor
-public class FacebookWebCommentImpl implements Comment {
+public class WebCommentImpl implements Comment {
 
     private static final String PLATFORM = "FACEBOOK";
     private static final String ACTION_TYPE = "COMMENT";

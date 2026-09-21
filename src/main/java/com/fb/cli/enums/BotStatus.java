@@ -5,5 +5,7 @@ public enum BotStatus {
     BANNED,
     PENDING,
     ERROR,
-    VERIFING
+    VERIFING,
+    LIVE,
+    DEAD
 }
