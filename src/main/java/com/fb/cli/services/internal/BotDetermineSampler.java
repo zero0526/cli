@@ -8,11 +8,10 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class BotDetermineSampler implements BotSampleStrategy{
+public class BotDetermineSampler {
     private final BotRepository botRepository;
     private BotRandomCfg config;
 
-    @Override
     public List<Bot> sample() {
         return null;
     }

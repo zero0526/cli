@@ -7,5 +7,14 @@ public record BotRandomCfg(
         String platform,
         int sampleSize,
         long seed
-) {
+) implements BotSamplingConfig {
+
+    public BotRandomCfg(String platform) {
+        this(null, platform, 1, 0L);
+    }
+
+    public BotRandomCfg(String platform, int sampleSize) {
+        this(null, platform, sampleSize, 0L);
+    }
 }
+

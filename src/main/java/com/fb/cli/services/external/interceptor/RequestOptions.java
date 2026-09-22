@@ -1,19 +1,15 @@
 package com.fb.cli.services.external.interceptor;
 
-import com.fb.cli.dtos.bot.BotSamplingCfg;
 import com.fb.cli.dtos.proxy.ProxyInfo;
 import com.fb.cli.dtos.proxy.RandomSamplingCfg;
 import com.fb.cli.entities.Bot;
-import com.fb.cli.services.internal.BotSampleStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import okhttp3.Request;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 
 @Data
 @Builder
@@ -32,24 +28,9 @@ public class RequestOptions {
     private ProxyInfo proxy;
 
     /**
-     * Cấu hình Bot Sampler (dạng BotSamplingCfg) để kéo Bot từ DB
-     */
-    private BotSamplingCfg botSampler;
-
-    /**
-     * Strategy Sampler tùy biến để kéo Bot
-     */
-    private BotSampleStrategy botSampleStrategy;
-
-    /**
-     * Thực thể Bot sau khi được kéo lên hoặc truyền trực tiếp
+     * Thực thể Bot sau khi được gán vào request
      */
     private Bot bot;
-
-    /**
-     * Lambda function tự định nghĩa để ánh xạ linh hoạt các trường của Bot vào Request
-     */
-    private BiConsumer<Bot, Request.Builder> botMapper;
 
     /**
      * Các header tùy chỉnh bổ sung
@@ -74,10 +55,9 @@ public class RequestOptions {
                 .build();
     }
 
-    public static RequestOptions fromBot(Bot bot, BiConsumer<Bot, Request.Builder> mapper) {
+    public static RequestOptions fromBot(Bot bot) {
         return RequestOptions.builder()
                 .bot(bot)
-                .botMapper(mapper)
                 .build();
     }
 
@@ -89,3 +69,4 @@ public class RequestOptions {
         return this;
     }
 }
+

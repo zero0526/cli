@@ -1,6 +1,5 @@
 package com.fb.cli.services.external;
 
-import com.fb.cli.services.external.interceptor.BotInterceptor;
 import com.fb.cli.services.external.interceptor.ProxyInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
@@ -21,38 +20,28 @@ public class SendRequest {
 
     private final OkHttpClient okHttpClient;
     private final ObjectProvider<ProxyInterceptor> proxyInterceptorProvider;
-    private final ObjectProvider<BotInterceptor> botInterceptorProvider;
     private ProxyInterceptor directProxyInterceptor;
-    private BotInterceptor directBotInterceptor;
 
     @Autowired
     public SendRequest(
             OkHttpClient okHttpClient,
-            @Lazy ObjectProvider<ProxyInterceptor> proxyInterceptorProvider,
-            @Lazy ObjectProvider<BotInterceptor> botInterceptorProvider
+            @Lazy ObjectProvider<ProxyInterceptor> proxyInterceptorProvider
     ) {
         this.okHttpClient = okHttpClient;
         this.proxyInterceptorProvider = proxyInterceptorProvider;
-        this.botInterceptorProvider = botInterceptorProvider;
     }
 
     /**
      * Constructor dùng cho testing hoặc khởi tạo thủ công
      */
-    public SendRequest(OkHttpClient okHttpClient, ProxyInterceptor proxyInterceptor, BotInterceptor botInterceptor) {
+    public SendRequest(OkHttpClient okHttpClient, ProxyInterceptor proxyInterceptor) {
         this.okHttpClient = okHttpClient;
         this.proxyInterceptorProvider = null;
-        this.botInterceptorProvider = null;
         this.directProxyInterceptor = proxyInterceptor;
-        this.directBotInterceptor = botInterceptor;
-    }
-
-    public SendRequest(OkHttpClient okHttpClient, ProxyInterceptor proxyInterceptor) {
-        this(okHttpClient, proxyInterceptor, (BotInterceptor) null);
     }
 
     public SendRequest(OkHttpClient okHttpClient) {
-        this(okHttpClient, (ProxyInterceptor) null, (BotInterceptor) null);
+        this(okHttpClient, (ProxyInterceptor) null);
     }
 
     private ProxyInterceptor getProxyInterceptor() {
@@ -65,16 +54,6 @@ public class SendRequest {
         return null;
     }
 
-    private BotInterceptor getBotInterceptor() {
-        if (this.directBotInterceptor != null) {
-            return this.directBotInterceptor;
-        }
-        if (this.botInterceptorProvider != null) {
-            return this.botInterceptorProvider.getIfAvailable();
-        }
-        return null;
-    }
-
     // ==========================================
     // FLUENT CALL BUILDER API (.withProxy().withBot().execute())
     // ==========================================
@@ -83,14 +62,14 @@ public class SendRequest {
      * Khởi tạo một HTTP GET request dạng Fluent call
      */
     public HttpRequestCall get(String url) {
-        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), getBotInterceptor(), "GET", url);
+        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), "GET", url);
     }
 
     /**
      * Khởi tạo một HTTP POST request dạng Fluent call
      */
     public HttpRequestCall post(String url) {
-        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), getBotInterceptor(), "POST", url);
+        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), "POST", url);
     }
 
     public HttpRequestCall post(String url, String jsonBody) {
@@ -101,7 +80,7 @@ public class SendRequest {
      * Khởi tạo một HTTP request tùy biến method
      */
     public HttpRequestCall request(String method, String url) {
-        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), getBotInterceptor(), method, url);
+        return new HttpRequestCall(okHttpClient, getProxyInterceptor(), method, url);
     }
 
     // ==========================================
@@ -126,3 +105,4 @@ public class SendRequest {
         return get(url).headers(headers).execute();
     }
 }
+
