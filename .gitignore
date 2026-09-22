@@ -32,7 +32,9 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+mcp-reverse-server/
+mcp_server_reverse/
+web-re-toolkit/
 ### VS Code ###
 .vscode/
 *.env
